@@ -103,10 +103,15 @@
     text-align: center;
     display:grid;
     grid-template-columns: auto auto auto;
+    gap: 10px;
+    height: 85vh;
   }
   .boxaside{
     background-color: #ffffff;
     text-align: left;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
   .boxaside h3{
     color: #000;
@@ -114,4 +119,18 @@
   }
   .boxaside p{
     color: #000;
+  }
+  body{
+    background: linear-gradient(90deg,#84BFDD, #FFF7CF);
+  }
+  .card{
+    background: #ffffff;
+    width:300px;
+    height: 500px;
+    padding: 10px;
+    box-shadow:  0px 5px  10px 0px #444;
+    border-radius: 10px;
+  }
+  .image{
+    border-radius: 500px;
   }
