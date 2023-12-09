@@ -134,3 +134,9 @@
   .image{
     border-radius: 500px;
   }
+  .linkk{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    
+  }

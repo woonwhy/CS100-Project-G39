@@ -175,6 +175,7 @@ async function submitForm(event) {
 
 // Event listener for form submission
 document.getElementById("myForm").addEventListener("submit", submitForm);
+document.getElementById("minicontent").innerHTML;
 
 // Event listeners for input validation on user input
 document.getElementById("fullname").addEventListener("input", validateName);
