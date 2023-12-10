@@ -104,7 +104,7 @@
     display:grid;
     grid-template-columns: auto auto auto;
     gap: 10px;
-    height: 85vh;
+    height: 82vh;
   }
   .boxaside{
     background-color: #ffffff;
