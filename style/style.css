@@ -62,11 +62,15 @@
     text-align: center;
     font-size: 12px;
     padding: 15px;
+   margin-top: 315px;
   }
   
   /* For mobile phones: */
   [class*="col-"] {
     width: 100%;
+    *{
+      align-items: center;
+    }
   }
   
   @media only screen and (min-width: 600px) {
@@ -99,13 +103,7 @@
     .col-11 {width: 91.66%;}
     .col-12 {width: 100%;}
   }
-  .content{
-    text-align: center;
-    display:grid;
-    grid-template-columns: auto auto auto;
-    gap: 10px;
-    height: 82vh;
-  }
+  
   .boxaside{
     background-color: #ffffff;
     text-align: left;
@@ -122,15 +120,19 @@
   }
   body{
     background: linear-gradient(90deg,#84BFDD, #FFF7CF);
+
   }
   .card{
     background: #ffffff;
-    width:300px;
+    width:auto;
     height: 500px;
     padding: 10px;
     box-shadow:  0px 5px  10px 0px #444;
     border-radius: 10px;
+    margin: 5px;
+    text-align: center;
   }
+  
   .image{
     border-radius: 500px;
   }
