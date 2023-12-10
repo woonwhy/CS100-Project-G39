@@ -9,13 +9,14 @@
 const config = {
   // backendUrl: "http://54.179.42.49/", // Default backend URL
   // backendUrl: "https://d1npkyc4r380kx.cloudfront.net/", // Default backend URL
-  backendUrl: "https://d1a6370uhsfk5w.cloudfront.net/", // Default backend URL
+  backendUrl: "http://localhost:8000/", // Default backend URL
 };
 
 // Function to validate Firstname and Lastname
 function validateName() {
   const fullnameInput = document.getElementById("fullname");
   const names = fullnameInput.value.trim().split(" ");
+  const fullnamePattern = /^[A-Z][a-z]+ [A-Z][a-z]+$/;
   const errorElement = document.getElementById("fullnameError");
 
   if (names.length !== 2) {
@@ -24,13 +25,21 @@ function validateName() {
   } else {
     errorElement.textContent = ""; // Clear the error message when valid
   }
+
+  if (!fullnamePattern.test(fullnameInput.value)) {
+    errorElement.textContent = "Please enter the first letter in capital letter.";
+    return false;
+  } else {
+    errorElement.textContent = ""; // Clear the error message when valid
+  }
+
   return true;
 }
 
 // Function to validate Student ID
 function validateStudentID() {
   const studentIDInput = document.getElementById("studentID");
-  const studentIDPattern = /^\d{10}$/;
+  const studentIDPattern = /^[6][0-9][0-2][0-9]{7}$/;
   const errorElement = document.getElementById("studentIDError");
 
   if (!studentIDPattern.test(studentIDInput.value)) {
@@ -68,7 +77,7 @@ function validateFormOnInput() {
 // Function to fetch activity types from the backend
 async function fetchActivityTypes() {
   try {
-    const response = await fetch(config.backendUrl + "getActivityType");
+    const response = await fetch(`http://${window.location.hostname}:${port}/getActivityType`);
     if (response.ok) {
       const data = await response.json();
       return data;
@@ -141,7 +150,7 @@ async function submitForm(event) {
 
   try {
     // Send data to the backend using POST request
-    const response = await fetch(config.backendUrl + "record", {
+    const response = await fetch(`http://${window.location.hostname}:${port}/record`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -175,7 +184,6 @@ async function submitForm(event) {
 
 // Event listener for form submission
 document.getElementById("myForm").addEventListener("submit", submitForm);
-document.getElementById("minicontent").innerHTML;
 
 // Event listeners for input validation on user input
 document.getElementById("fullname").addEventListener("input", validateName);
@@ -183,3 +191,54 @@ document
   .getElementById("studentID")
   .addEventListener("input", validateStudentID);
 document.getElementById("email").addEventListener("input", validateEmail);
+
+// ฟังก์ชันสำหรับการ submit ฟอร์ม
+async function submitForm(event) {
+  event.preventDefault();
+
+  // รับข้อมูลจากฟอร์ม
+  const formData = new FormData(event.target);
+
+  // ดึงข้อมูลที่ต้องการ
+
+  // ... (ดึงข้อมูลอื่นๆ ตามต้องการ) ...
+  const first_name = formData.get("fullname").split(" ")[0];
+  const last_name = formData.get("fullname").split(" ")[1];
+  const student_id = parseInt(formData.get("studentID"));
+  const email = formData.get("email");
+  const title = formData.get("workTitle");
+  const type_of_work_id = parseInt(formData.get("activityType")); 
+  const academic_year = parseInt(formData.get("academicYear")) - 543;
+  const semester = parseInt(formData.get("semester"));
+  const start_date = formData.get("startDate");
+  const end_date = formData.get("endDate");
+  const location = formData.get("location");
+  const description = formData.get("description");
+
+  // แสดงผลข้อมูลที่ Element ที่มีอยู่ในหน้าเว็บ
+  const resultContainer = document.getElementById("resultContainer");
+  resultContainer.innerHTML = `
+    <!-- ... (แสดงข้อมูลอื่นๆ ตามต้องการ) ... -->
+    <p>Firstname: ${first_name}</p>
+    <p>Lastname: ${last_name}</p>
+    <p>Student ID: ${student_id}</p>
+    <p>Email: ${email}</p>
+    <p>Work/Activity Title: ${title}</p>
+    <p>Type of Work ID: ${type_of_work_id}</p>
+    <p>Academic Year: ${academic_year}</p>
+    <p>Semester: ${semester}</p>
+    <p>Start Date/Time: ${start_date}</p>
+    <p>End Date/Time: ${end_date}</p>
+    <p>Location: ${location}</p>
+    <p>Description: ${description}</p>
+    
+  `;
+
+  // เพิ่ม Element สำหรับแสดงผล
+  const additionalResult = document.createElement("div");
+  additionalResult.innerHTML = `
+    
+    <!-- ... (แสดงข้อมูลอื่นๆ ตามต้องการ) ... -->
+  `;
+  resultContainer.appendChild(additionalResult);
+}

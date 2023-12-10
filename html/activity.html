@@ -7,7 +7,8 @@
 <link rel="stylesheet" href="../style/style.css">
 <link rel="stylesheet" href="../style/stylejs.css">
 <title>CSTU Passport</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
 </head>
 <body>
 
@@ -62,15 +63,44 @@
                 <label for="activityType">Type of Work/Activity <span class="required">*</span></label>
                 <select id="activityType" name="activityType" required>
                   <option value="" disabled selected>Select an option</option>
-                  <option value="Course">Course</option>
-                  <option value="Activity">Activity</option>
-                  <option value="Work">Work</option>
-                  <option value="Research">Research</option>
-                  <option value="Sports">Sports</option>
-                  <option value="Competition">Competition</option>
-                  <option value="Computer Science">Computer Science</option>
+                  <option value="1">Course</option>
+                  <option value="2">Activity</option>
+                  <option value="3">Work</option>
+                  <option value="4">Research</option>
+                  <option value="5">Sports</option>
+                  <option value="6">Competition</option>
+                  <option value="7">Computer Science</option>
                 </select>
               </div>
+
+                      <!-- Academic Year Field -->
+              <div class="form-group">
+                <label for="academicYear">Academic Year</label>
+                <select id="academicYear" name="academicYear">
+                  <option value="" disabled selected>Select an option</option>
+                  <option value="2561">2561</option>
+                  <option value="2562">2562</option>
+                  <option value="2563">2563</option>
+                  <option value="2564">2564</option>
+                  <option value="2565">2565</option>
+                  <option value="2566">2566</option>
+                  <option value="2567">2567</option>
+                  <option value="2568">2568</option>
+                  <option value="2569">2569</option>
+                </select>
+              </div>
+
+              <!-- Semester Field -->
+              <div class="form-group">
+                <label for="semester">Semester</label>
+                <select id="semester" name="semester">
+                  <option value="" disabled selected>Select an option</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="Summer">Summer</option>
+                </select>
+              </div>
+
 
               <!-- Start Date/Time Field -->
               <div class="form-group">
@@ -101,12 +131,7 @@
                 <input type="submit" value="Submit" />
               </div>
             </form>
-            <div class="minicontent">
-                <p class="showncontent"> 
-
-                  
-                </p>
-            </div>
+            <div id="resultContainer"></div>
   </div>
 
   <!-- JavaScript -->
